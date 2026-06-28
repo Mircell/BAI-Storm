@@ -1,0 +1,638 @@
+2026-06-28 13:37:07,391 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 13:37:07,391 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 13:39:14,894 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.128.236:5000
+2026-06-28 13:39:14,894 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-28 13:39:14,894 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 13:39:15,604 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 13:39:15,604 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 13:39:19,746 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:39:19] "GET / HTTP/1.1" 200 -
+2026-06-28 13:39:24,814 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:39:24] "GET / HTTP/1.1" 200 -
+2026-06-28 13:39:36,367 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:39:36] "GET / HTTP/1.1" 200 -
+2026-06-28 13:39:36,467 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 13:39:36,497 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:39:36] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+2026-06-28 13:40:25,871 - __main__ - DEBUG - Session created: 8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a
+2026-06-28 13:40:25,871 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:40:25] "POST /start HTTP/1.1" 200 -
+2026-06-28 13:40:25,877 - __main__ - DEBUG - Next idea request for session: 8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a
+2026-06-28 13:40:25,878 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:40:25,919 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:40:25,920 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:40:25,921 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:40:25] "GET /next/8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a HTTP/1.1" 200 -
+2026-06-28 13:40:26,940 - __main__ - DEBUG - Next idea request for session: 8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a
+2026-06-28 13:40:26,942 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:40:26,971 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:40:26,972 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:40:26,973 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:40:26] "GET /next/8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a HTTP/1.1" 200 -
+2026-06-28 13:40:27,986 - __main__ - DEBUG - Next idea request for session: 8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a
+2026-06-28 13:40:27,986 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:40:27,991 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:40:27,995 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:40:27,997 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:40:27] "GET /next/8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a HTTP/1.1" 200 -
+2026-06-28 13:40:29,019 - __main__ - DEBUG - Next idea request for session: 8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a
+2026-06-28 13:40:29,019 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:40:29,032 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:40:29,032 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:40:29,034 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:40:29] "GET /next/8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a HTTP/1.1" 200 -
+2026-06-28 13:40:30,053 - __main__ - DEBUG - Next idea request for session: 8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a
+2026-06-28 13:40:30,053 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:40:30,063 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:40:30,064 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:40:30,065 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:40:30] "GET /next/8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a HTTP/1.1" 200 -
+2026-06-28 13:40:31,086 - __main__ - DEBUG - Next idea request for session: 8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a
+2026-06-28 13:40:31,091 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:40:31] "GET /next/8ce40e1b-ef4e-4eb9-80ac-48476f9ae40a HTTP/1.1" 200 -
+2026-06-28 13:41:10,488 - __main__ - DEBUG - Session created: c56be6cb-aa9b-481a-9ebb-7aef0cc691a8
+2026-06-28 13:41:10,489 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:41:10] "POST /start HTTP/1.1" 200 -
+2026-06-28 13:41:10,510 - __main__ - DEBUG - Next idea request for session: c56be6cb-aa9b-481a-9ebb-7aef0cc691a8
+2026-06-28 13:41:10,510 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:41:10,521 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:41:10,522 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:41:10,522 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:41:10] "GET /next/c56be6cb-aa9b-481a-9ebb-7aef0cc691a8 HTTP/1.1" 200 -
+2026-06-28 13:41:11,534 - __main__ - DEBUG - Next idea request for session: c56be6cb-aa9b-481a-9ebb-7aef0cc691a8
+2026-06-28 13:41:11,534 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:41:11,543 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:41:11,543 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:41:11,544 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:41:11] "GET /next/c56be6cb-aa9b-481a-9ebb-7aef0cc691a8 HTTP/1.1" 200 -
+2026-06-28 13:41:12,554 - __main__ - DEBUG - Next idea request for session: c56be6cb-aa9b-481a-9ebb-7aef0cc691a8
+2026-06-28 13:41:12,555 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:41:12,569 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:41:12,571 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:41:12,571 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:41:12] "GET /next/c56be6cb-aa9b-481a-9ebb-7aef0cc691a8 HTTP/1.1" 200 -
+2026-06-28 13:41:13,593 - __main__ - DEBUG - Next idea request for session: c56be6cb-aa9b-481a-9ebb-7aef0cc691a8
+2026-06-28 13:41:13,594 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:41:13,622 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:41:13,623 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:41:13,623 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:41:13] "GET /next/c56be6cb-aa9b-481a-9ebb-7aef0cc691a8 HTTP/1.1" 200 -
+2026-06-28 13:41:14,631 - __main__ - DEBUG - Next idea request for session: c56be6cb-aa9b-481a-9ebb-7aef0cc691a8
+2026-06-28 13:41:14,631 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:41:14,651 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:41:14,651 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:41:14,651 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:41:14] "GET /next/c56be6cb-aa9b-481a-9ebb-7aef0cc691a8 HTTP/1.1" 200 -
+2026-06-28 13:41:15,666 - __main__ - DEBUG - Next idea request for session: c56be6cb-aa9b-481a-9ebb-7aef0cc691a8
+2026-06-28 13:41:15,666 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:41:15] "GET /next/c56be6cb-aa9b-481a-9ebb-7aef0cc691a8 HTTP/1.1" 200 -
+2026-06-28 13:48:46,798 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.128.236:5000
+2026-06-28 13:48:46,798 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-28 13:48:46,798 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 13:48:47,885 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 13:48:47,901 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 13:48:59,390 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:48:59] "GET / HTTP/1.1" 200 -
+2026-06-28 13:49:37,138 - __main__ - DEBUG - Session created: f39e2249-62e7-4b65-b5de-fbb94f78e9a9
+2026-06-28 13:49:37,138 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:49:37] "POST /start HTTP/1.1" 200 -
+2026-06-28 13:49:37,195 - __main__ - DEBUG - Next idea request for session: f39e2249-62e7-4b65-b5de-fbb94f78e9a9
+2026-06-28 13:49:37,195 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:49:37,353 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:49:37,354 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:49:37,355 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:49:37] "GET /next/f39e2249-62e7-4b65-b5de-fbb94f78e9a9 HTTP/1.1" 200 -
+2026-06-28 13:49:38,405 - __main__ - DEBUG - Next idea request for session: f39e2249-62e7-4b65-b5de-fbb94f78e9a9
+2026-06-28 13:49:38,406 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:49:38,434 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:49:38,435 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:49:38,466 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:49:38] "GET /next/f39e2249-62e7-4b65-b5de-fbb94f78e9a9 HTTP/1.1" 200 -
+2026-06-28 13:49:39,486 - __main__ - DEBUG - Next idea request for session: f39e2249-62e7-4b65-b5de-fbb94f78e9a9
+2026-06-28 13:49:39,486 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:49:39,500 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:49:39,500 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:49:39,500 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:49:39] "GET /next/f39e2249-62e7-4b65-b5de-fbb94f78e9a9 HTTP/1.1" 200 -
+2026-06-28 13:49:40,521 - __main__ - DEBUG - Next idea request for session: f39e2249-62e7-4b65-b5de-fbb94f78e9a9
+2026-06-28 13:49:40,521 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:49:40,553 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:49:40,554 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:49:40,554 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:49:40] "GET /next/f39e2249-62e7-4b65-b5de-fbb94f78e9a9 HTTP/1.1" 200 -
+2026-06-28 13:49:41,571 - __main__ - DEBUG - Next idea request for session: f39e2249-62e7-4b65-b5de-fbb94f78e9a9
+2026-06-28 13:49:41,572 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:49:41,598 - __main__ - ERROR - LLM Error: Client.__init__() got an unexpected keyword argument 'proxies'
+2026-06-28 13:49:41,599 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 84, in get_next_idea
+    client = OpenAI(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_client.py", line 112, in __init__
+    super().__init__(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\openai\_base_client.py", line 793, in __init__
+    self._client = http_client or SyncHttpxClientWrapper(
+TypeError: Client.__init__() got an unexpected keyword argument 'proxies'
+
+2026-06-28 13:49:41,600 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:49:41] "GET /next/f39e2249-62e7-4b65-b5de-fbb94f78e9a9 HTTP/1.1" 200 -
+2026-06-28 13:49:42,618 - __main__ - DEBUG - Next idea request for session: f39e2249-62e7-4b65-b5de-fbb94f78e9a9
+2026-06-28 13:49:42,618 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:49:42] "GET /next/f39e2249-62e7-4b65-b5de-fbb94f78e9a9 HTTP/1.1" 200 -
+2026-06-28 13:50:44,180 - werkzeug - INFO -  * Detected change in 'C:\\Users\\mm\\AppData\\Roaming\\Python\\Python310\\site-packages\\openai\\types\\image_edit_params.py', reloading
+2026-06-28 13:50:44,363 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 13:50:50,846 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 13:50:50,863 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 13:51:59,750 - werkzeug - INFO -  * Detected change in 'D:\\PorgrammingProject\\BAI-Storm\\app.py', reloading
+2026-06-28 13:51:59,866 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 13:52:00,466 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 13:52:00,466 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 13:53:03,634 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.128.236:5000
+2026-06-28 13:53:03,634 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-28 13:53:03,634 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 13:53:04,064 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 13:53:04,064 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 13:53:08,205 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:53:08] "GET / HTTP/1.1" 200 -
+2026-06-28 13:53:57,428 - __main__ - DEBUG - Session created: 7c573355-d2ff-4816-b26c-0257bd92d1c9
+2026-06-28 13:53:57,429 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:53:57] "POST /start HTTP/1.1" 200 -
+2026-06-28 13:53:57,434 - __main__ - DEBUG - Next idea request for session: 7c573355-d2ff-4816-b26c-0257bd92d1c9
+2026-06-28 13:53:57,435 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:53:57,446 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 13:54:01,630 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 13:54:01,631 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:54:01] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+2026-06-28 13:54:04,735 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 2064
+2026-06-28 13:54:04,757 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:54:04] "GET /next/7c573355-d2ff-4816-b26c-0257bd92d1c9 HTTP/1.1" 200 -
+2026-06-28 13:54:05,782 - __main__ - DEBUG - Next idea request for session: 7c573355-d2ff-4816-b26c-0257bd92d1c9
+2026-06-28 13:54:05,782 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:54:05,820 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 13:54:15,970 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 3170
+2026-06-28 13:54:15,994 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:54:15] "GET /next/7c573355-d2ff-4816-b26c-0257bd92d1c9 HTTP/1.1" 200 -
+2026-06-28 13:54:17,040 - __main__ - DEBUG - Next idea request for session: 7c573355-d2ff-4816-b26c-0257bd92d1c9
+2026-06-28 13:54:17,040 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:54:17,054 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 13:54:35,638 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 6562
+2026-06-28 13:54:35,683 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:54:35] "GET /next/7c573355-d2ff-4816-b26c-0257bd92d1c9 HTTP/1.1" 200 -
+2026-06-28 13:54:36,726 - __main__ - DEBUG - Next idea request for session: 7c573355-d2ff-4816-b26c-0257bd92d1c9
+2026-06-28 13:54:36,726 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:54:36,744 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 13:54:43,920 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 2314
+2026-06-28 13:54:43,920 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:54:43] "GET /next/7c573355-d2ff-4816-b26c-0257bd92d1c9 HTTP/1.1" 200 -
+2026-06-28 13:54:44,944 - __main__ - DEBUG - Next idea request for session: 7c573355-d2ff-4816-b26c-0257bd92d1c9
+2026-06-28 13:54:44,944 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 13:54:44,983 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 13:54:54,188 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 2547
+2026-06-28 13:54:54,207 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:54:54] "GET /next/7c573355-d2ff-4816-b26c-0257bd92d1c9 HTTP/1.1" 200 -
+2026-06-28 13:54:55,219 - __main__ - DEBUG - Next idea request for session: 7c573355-d2ff-4816-b26c-0257bd92d1c9
+2026-06-28 13:54:55,221 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:54:55] "GET /next/7c573355-d2ff-4816-b26c-0257bd92d1c9 HTTP/1.1" 200 -
+2026-06-28 13:55:02,839 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:55:02] "GET /export/7c573355-d2ff-4816-b26c-0257bd92d1c9 HTTP/1.1" 200 -
+2026-06-28 13:59:05,846 - werkzeug - INFO -  * Detected change in 'D:\\PorgrammingProject\\BAI-Storm\\app.py', reloading
+2026-06-28 13:59:05,894 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 13:59:06,329 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 13:59:06,345 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 13:59:41,183 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.128.236:5000
+2026-06-28 13:59:41,183 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-28 13:59:41,183 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 13:59:41,564 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 13:59:41,570 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 13:59:44,752 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:59:44] "[33mGET /export/7c573355-d2ff-4816-b26c-0257bd92d1c9 HTTP/1.1[0m" 404 -
+2026-06-28 13:59:47,945 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:59:47] "GET / HTTP/1.1" 200 -
+2026-06-28 13:59:48,013 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 13:59:48,014 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 13:59:48] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+2026-06-28 14:00:25,628 - werkzeug - INFO -  * Detected change in 'D:\\PorgrammingProject\\BAI-Storm\\app.py', reloading
+2026-06-28 14:00:25,663 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 14:00:26,089 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 14:00:26,095 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 14:00:28,745 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:00:28] "GET / HTTP/1.1" 200 -
+2026-06-28 14:00:28,792 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:00:28,793 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:00:28] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+2026-06-28 14:00:36,750 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.128.236:5000
+2026-06-28 14:00:36,750 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-28 14:00:36,750 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 14:00:37,133 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 14:00:37,133 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 14:00:38,299 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:00:38] "GET / HTTP/1.1" 200 -
+2026-06-28 14:00:38,362 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:00:38,364 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:00:38] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+2026-06-28 14:00:41,166 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:00:41] "GET / HTTP/1.1" 200 -
+2026-06-28 14:00:41,222 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:00:41,222 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:00:41] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+2026-06-28 14:00:42,845 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:00:42,846 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:00:42] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-28 14:01:17,443 - werkzeug - INFO -  * Detected change in 'D:\\PorgrammingProject\\BAI-Storm\\app.py', reloading
+2026-06-28 14:01:17,480 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 14:01:17,891 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 14:01:17,896 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 14:01:19,216 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:01:19] "GET / HTTP/1.1" 200 -
+2026-06-28 14:01:19,275 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:01:19,277 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:01:19] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+2026-06-28 14:01:19,698 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:01:19,700 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:01:19] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-28 14:01:25,465 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.128.236:5000
+2026-06-28 14:01:25,465 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-28 14:01:25,465 - werkzeug - INFO -  * Restarting with stat
+2026-06-28 14:01:25,844 - werkzeug - WARNING -  * Debugger is active!
+2026-06-28 14:01:25,860 - werkzeug - INFO -  * Debugger PIN: 471-909-225
+2026-06-28 14:01:26,966 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:01:26] "GET / HTTP/1.1" 200 -
+2026-06-28 14:01:27,029 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:01:27,032 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:01:27] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+2026-06-28 14:01:27,449 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:01:27,450 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:01:27] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-28 14:02:02,985 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:02:02] "GET / HTTP/1.1" 200 -
+2026-06-28 14:02:03,053 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:02:03,056 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:02:03] "[35m[1mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 500 -
+2026-06-28 14:02:03,443 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:02:03,444 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:02:03] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-28 14:02:34,863 - __main__ - DEBUG - Session created: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:02:34,863 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:02:34] "POST /start HTTP/1.1" 200 -
+2026-06-28 14:02:34,875 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:02:34,875 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:02:34,890 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:02:42,434 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 1578
+2026-06-28 14:02:42,434 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:02:42] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:02:43,452 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:02:43,452 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:02:43,461 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:03:00,384 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 4656
+2026-06-28 14:03:00,400 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:03:00] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:03:01,427 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:03:01,427 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:03:01,439 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:03:10,401 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 2138
+2026-06-28 14:03:10,417 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:03:10] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:03:11,435 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:03:11,435 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:03:11,441 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:03:43,285 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 9580
+2026-06-28 14:03:43,311 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:03:43] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:03:44,340 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:03:44,340 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:03:44,346 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:04:09,165 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 7121
+2026-06-28 14:04:09,182 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:04:09] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:04:10,206 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:04:10,206 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:04:10,214 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:04:16,715 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 1331
+2026-06-28 14:04:16,715 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:04:16] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:04:17,753 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:04:17,756 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:04:17,766 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:04:24,319 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 1441
+2026-06-28 14:04:24,319 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:04:24] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:04:25,346 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:04:25,346 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:04:25,351 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:04:36,036 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 3036
+2026-06-28 14:04:36,057 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:04:36] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:04:37,069 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:04:37,069 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:04:37,077 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:04:58,237 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 6677
+2026-06-28 14:04:58,237 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:04:58] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:04:59,261 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:04:59,261 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:04:59,261 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:05:59,282 - __main__ - ERROR - LLM Error: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)
+2026-06-28 14:05:59,403 - __main__ - ERROR - Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Program Files\Python310\lib\http\client.py", line 1374, in getresponse
+    response.begin()
+  File "C:\Program Files\Python310\lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "C:\Program Files\Python310\lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Program Files\Python310\lib\socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\PorgrammingProject\BAI-Storm\app.py", line 97, in get_next_idea
+    response = requests.post(url, headers=headers, json=data, timeout=60)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\requests\adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)
+
+2026-06-28 14:05:59,403 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:05:59] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:06:01,262 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:06:01,262 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:06:01,278 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:06:14,290 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 2244
+2026-06-28 14:06:14,312 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:06:14] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:06:15,342 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:06:15,342 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:06:15,350 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:06:35,802 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 5809
+2026-06-28 14:06:35,818 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:06:35] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:06:36,839 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:06:36,839 - __main__ - DEBUG - Calling LLM with base_url=http://127.0.0.1:8000/v1, model=thinking_not_search
+2026-06-28 14:06:36,850 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2026-06-28 14:06:41,824 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:06:41] "POST /stop/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:06:49,875 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:06:49] "GET /export/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:06:50,227 - __main__ - ERROR - Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\mm\AppData\Roaming\Python\Python310\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+2026-06-28 14:06:50,231 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:06:50] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-28 14:06:53,408 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8000 "POST /v1/chat/completions HTTP/1.1" 200 4566
+2026-06-28 14:06:53,410 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:06:53] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -
+2026-06-28 14:06:53,414 - __main__ - DEBUG - Next idea request for session: af1c7307-1937-46b5-9b66-fe1fdf62645e
+2026-06-28 14:06:53,415 - werkzeug - INFO - 127.0.0.1 - - [28/Jun/2026 14:06:53] "GET /next/af1c7307-1937-46b5-9b66-fe1fdf62645e HTTP/1.1" 200 -

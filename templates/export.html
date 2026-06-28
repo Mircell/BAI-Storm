@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گزارش طوفان فکری</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px 0;
+        }
+        .container {
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        .problem-box {
+            background: #eef4fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-right: 5px solid #667eea;
+        }
+        .agent-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-right: 4px solid #764ba2;
+        }
+        .agent-name {
+            font-weight: bold;
+            color: #4a4a4a;
+        }
+        .idea-text {
+            margin-top: 8px;
+            padding-right: 10px;
+            border-right: 3px solid #ddd;
+            padding-right: 15px;
+            color: #333;
+        }
+        .badge-idea-count {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .btn-print {
+            margin-top: 20px;
+        }
+        @media print {
+            .btn-print { display: none; }
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; border-radius: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="bi bi-lightbulb"></i> گزارش طوفان فکری</h1>
+
+        <div class="problem-box">
+            <h5><i class="bi bi-question-circle"></i> مسئله:</h5>
+            <p class="fs-5">{{ summary.problem }}</p>
+        </div>
+
+        <div class="mb-4">
+            <span class="badge bg-primary fs-6">{{ summary.num_agents }} ایجنت</span>
+            <span class="badge bg-secondary fs-6 ms-2">{{ summary.all_ideas|length }} ایده</span>
+            {% if summary.completed %}
+                <span class="badge bg-success fs-6 ms-2">تکمیل شده</span>
+            {% elif summary.stopped %}
+                <span class="badge bg-danger fs-6 ms-2">متوقف شده</span>
+            {% endif %}
+        </div>
+
+        <h4 class="mt-4 mb-3"><i class="bi bi-chat-left-text"></i> ایده‌ها</h4>
+
+        {% if summary.all_ideas %}
+            {% for idea in summary.all_ideas %}
+                <div class="agent-card">
+                    <div class="agent-name">
+                        <i class="bi bi-person-circle"></i>
+                        {% set agent_found = false %}
+                        {% for agent in summary.agents %}
+                            {% if agent.ideas and agent.ideas[loop.index0] == idea %}
+                                {{ agent.name }}
+                                {% set agent_found = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if not agent_found %}
+                            ایجنت {{ loop.index }}
+                        {% endif %}
+                    </div>
+                    <div class="idea-text">{{ idea }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">هیچ ایده‌ای ثبت نشده است.</p>
+        {% endif %}
+
+        <div class="footer">
+            <p>تولید شده توسط سیستم طوفان فکری چند ایجنت</p>
+            <p>{{ summary.num_agents }} ایجنت در {{ summary.all_ideas|length }} ایده مشارکت داشتند.</p>
+        </div>
+
+        <div class="text-center btn-print">
+            <button class="btn btn-secondary" onclick="window.print()">
+                <i class="bi bi-printer"></i> چاپ / ذخیره PDF
+            </button>
+            <button class="btn btn-outline-primary" onclick="window.close()">
+                <i class="bi bi-x-circle"></i> بستن
+            </button>
+        </div>
+    </div>
+</body>
+</html>

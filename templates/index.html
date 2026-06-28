@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طوفان فکری چند ایجنت</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 900px;
+            padding: 20px;
+        }
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px 20px 0 0 !important;
+            padding: 25px 30px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            border: none;
+        }
+        .card-header i {
+            margin-left: 10px;
+        }
+        .form-control, .form-select {
+            border-radius: 12px;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .form-label {
+            font-weight: 600;
+            color: #444;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 14px 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        .btn-secondary {
+            border-radius: 12px;
+            padding: 14px 30px;
+            font-weight: bold;
+        }
+        .agent-personality-group {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-right: 4px solid #667eea;
+        }
+        .agent-personality-group label {
+            font-weight: 600;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        .agent-personality-group textarea {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            width: 100%;
+            resize: vertical;
+            min-height: 60px;
+        }
+        .badge-agents {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .form-text {
+            color: #888;
+            font-size: 0.85rem;
+        }
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .idea-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin-bottom: 8px;
+            border-right: 4px solid #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-brain"></i> طوفان فکری چند ایجنت
+            </div>
+            <div class="card-body p-4">
+                <form id="setupForm">
+                    <!-- تنظیمات API -->
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h5 class="mb-3"><i class="bi bi-gear"></i> تنظیمات OpenAI API</h5>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Base URL</label>
+                            <input type="text" class="form-control" id="baseUrl" value="http://127.0.0.1:8000/v1" placeholder="http://127.0.0.1:8000/v1">
+                            <div class="form-text">آدرس API (برای OpenAI رسمی یا پروکسی‌های محلی)</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">API Key <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="apiKey" value="sk-local" placeholder="sk-..." required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Model</label>
+                            <input type="text" class="form-control" id="model" value="thinking_not_search" placeholder="llama2, gpt-3.5-turbo, ...">
+                            <div class="form-text">نام مدل مورد استفاده (مثلاً llama2 یا gpt-3.5-turbo)</div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- تنظیمات اصلی -->
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h5 class="mb-3"><i class="bi bi-list-task"></i> تنظیمات جلسه</h5>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">تعداد ایجنت‌ها</label>
+                            <input type="number" class="form-control" id="numAgents" value="5" min="1" max="20">
+                            <div class="form-text">بین ۱ تا ۲۰ ایجنت</div>
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <label class="form-label">مسئله / مشکل <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="problem" rows="2" placeholder="مشکل یا موضوع مورد نظر برای طوفان فکری را وارد کنید..." required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- شخصیت‌ها -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="mb-0"><i class="bi bi-person-badge"></i> شخصیت‌های ایجنت</h5>
+                            <div>
+                                <span class="badge-agents" id="agentCountLabel">۵ ایجنت</span>
+                                <button type="button" class="btn btn-sm btn-outline-secondary ms-2" id="togglePersonalitiesBtn">
+                                    <i class="bi bi-chevron-down"></i> نمایش/پنهان
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-text mb-2">شخصیت‌های پیش‌فرض به صورت خودکار تنظیم می‌شوند. می‌توانید آن‌ها را ویرایش کنید.</div>
+                        <div id="personalitiesContainer">
+                            <!-- توسط جاوااسکریپت پر می‌شود -->
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100" id="startBtn">
+                        <i class="bi bi-play-circle"></i> شروع طوفان فکری
+                    </button>
+                </form>
+
+                <!-- نمایش وضعیت و ایده‌ها -->
+                <div id="sessionArea" style="display: none;" class="mt-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5><i class="bi bi-chat-dots"></i> جلسه در حال اجرا</h5>
+                        <div>
+                            <span class="badge bg-success" id="statusBadge">در حال اجرا</span>
+                            <button class="btn btn-danger btn-sm ms-2" id="stopBtn">
+                                <i class="bi bi-stop-circle"></i> توقف
+                            </button>
+                        </div>
+                    </div>
+                    <div class="alert alert-info" id="currentAgentInfo">
+                        <i class="bi bi-hourglass-split"></i> در حال فکر کردن: <strong id="currentAgentName">...</strong>
+                    </div>
+                    <div id="ideasList" class="mt-3">
+                        <!-- ایده‌ها در اینجا نمایش داده می‌شوند -->
+                    </div>
+                    <div class="loading-spinner" id="loadingSpinner">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">در حال دریافت ایده...</span>
+                        </div>
+                        <p class="mt-2">در حال تولید ایده...</p>
+                    </div>
+                </div>
+
+                <!-- دکمه‌های خروجی بعد از توقف -->
+                <div id="exportArea" style="display: none;" class="mt-4">
+                    <div class="alert alert-success">
+                        <i class="bi bi-check-circle"></i> طوفان فکری متوقف شد. می‌توانید خروجی را دریافت کنید.
+                    </div>
+                    <button class="btn btn-success w-100" id="exportBtn">
+                        <i class="bi bi-file-earmark-html"></i> دریافت خروجی HTML
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let sessionId = null;
+        let isRunning = false;
+        let isStopped = false;
+        let pollInterval = null;
+
+        // مدیریت نمایش/پنهان شخصیت‌ها
+        document.getElementById('togglePersonalitiesBtn').addEventListener('click', function() {
+            const container = document.getElementById('personalitiesContainer');
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+                this.innerHTML = '<i class="bi bi-chevron-up"></i> نمایش/پنهان';
+            } else {
+                container.style.display = 'none';
+                this.innerHTML = '<i class="bi bi-chevron-down"></i> نمایش/پنهان';
+            }
+        });
+
+        // به‌روزرسانی تعداد ایجنت‌ها و شخصیت‌ها
+        document.getElementById('numAgents').addEventListener('input', function() {
+            const num = parseInt(this.value) || 5;
+            document.getElementById('agentCountLabel').textContent = `${num} ایجنت`;
+            renderPersonalities(num);
+        });
+
+        function renderPersonalities(num) {
+            const container = document.getElementById('personalitiesContainer');
+            container.innerHTML = '';
+            for (let i = 0; i < num; i++) {
+                const div = document.createElement('div');
+                div.className = 'agent-personality-group';
+                div.innerHTML = `
+                    <label for="personality_${i}">ایجنت ${i+1} - شخصیت</label>
+                    <textarea id="personality_${i}" placeholder="شخصیت و نقش این ایجنت را مشخص کنید...">شما یک کارشناس خلاق و تحلیل‌گر هستید. ایده‌های نوآورانه و عملی ارائه دهید.</textarea>
+                `;
+                container.appendChild(div);
+            }
+        }
+
+        // بارگذاری اولیه شخصیت‌ها
+        renderPersonalities(5);
+
+        // ارسال فرم
+        document.getElementById('setupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const numAgents = parseInt(document.getElementById('numAgents').value);
+            const problem = document.getElementById('problem').value.trim();
+            const baseUrl = document.getElementById('baseUrl').value.trim();
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const model = document.getElementById('model').value.trim();
+
+            if (!problem) {
+                alert('لطفاً مسئله را وارد کنید.');
+                return;
+            }
+            if (!apiKey) {
+                alert('لطفاً API Key را وارد کنید.');
+                return;
+            }
+
+            // جمع‌آوری شخصیت‌ها
+            const personalities = [];
+            for (let i = 0; i < numAgents; i++) {
+                const el = document.getElementById(`personality_${i}`);
+                personalities.push(el ? el.value : '');
+            }
+
+            const data = {
+                num_agents: numAgents,
+                problem: problem,
+                base_url: baseUrl,
+                api_key: apiKey,
+                model: model,
+                personalities: personalities
+            };
+
+            try {
+                const response = await fetch('/start', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (result.error) {
+                    alert('خطا: ' + result.error);
+                    return;
+                }
+                sessionId = result.session_id;
+                startSession();
+            } catch (err) {
+                alert('خطا در ارتباط با سرور: ' + err.message);
+            }
+        });
+
+        function startSession() {
+            isRunning = true;
+            isStopped = false;
+            document.getElementById('sessionArea').style.display = 'block';
+            document.getElementById('exportArea').style.display = 'none';
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('ideasList').innerHTML = '';
+            document.getElementById('statusBadge').textContent = 'در حال اجرا';
+            document.getElementById('statusBadge').className = 'badge bg-success';
+
+            // شروع polling
+            pollNextIdea();
+        }
+
+        async function pollNextIdea() {
+            if (!isRunning || isStopped) return;
+
+            // نمایش اسپینر
+            document.getElementById('loadingSpinner').style.display = 'block';
+
+            try {
+                const response = await fetch(`/next/${sessionId}`);
+                const data = await response.json();
+
+                document.getElementById('loadingSpinner').style.display = 'none';
+
+                if (data.error) {
+                    alert('خطا: ' + data.error);
+                    stopSession();
+                    return;
+                }
+
+                if (data.status === 'completed') {
+                    // جلسه کامل شد
+                    isRunning = false;
+                    document.getElementById('statusBadge').textContent = 'تکمیل شد';
+                    document.getElementById('statusBadge').className = 'badge bg-primary';
+                    document.getElementById('startBtn').disabled = false;
+                    document.getElementById('exportArea').style.display = 'block';
+                    updateIdeasList(data.summary.all_ideas || []);
+                    return;
+                }
+
+                if (data.status === 'stopped') {
+                    isRunning = false;
+                    document.getElementById('statusBadge').textContent = 'متوقف شد';
+                    document.getElementById('statusBadge').className = 'badge bg-danger';
+                    document.getElementById('startBtn').disabled = false;
+                    document.getElementById('exportArea').style.display = 'block';
+                    updateIdeasList(data.summary.all_ideas || []);
+                    return;
+                }
+
+                // در حال اجرا
+                if (data.agent && data.idea) {
+                    document.getElementById('currentAgentName').textContent = data.agent;
+                    addIdeaToUI(data.agent, data.idea);
+                }
+
+                // ادامه polling
+                setTimeout(pollNextIdea, 1000);
+
+            } catch (err) {
+                document.getElementById('loadingSpinner').style.display = 'none';
+                console.error('Error polling:', err);
+                // اگر خطا JSON نبود، ممکن است سرور HTML برگرداند، سعی می‌کنیم خطا را نمایش دهیم
+                if (err.message && err.message.includes('Unexpected token')) {
+                    alert('خطا در پاسخ سرور: لطفاً کنسول را بررسی کنید و مطمئن شوید سرور در حال اجراست.');
+                }
+                // تلاش مجدد
+                setTimeout(pollNextIdea, 2000);
+            }
+        }
+
+        function addIdeaToUI(agent, idea) {
+            const list = document.getElementById('ideasList');
+            const div = document.createElement('div');
+            div.className = 'idea-item';
+            div.innerHTML = `<strong>${agent}:</strong> ${idea}`;
+            list.appendChild(div);
+            // اسکرول به پایین
+            list.scrollTop = list.scrollHeight;
+        }
+
+        function updateIdeasList(ideas) {
+            const list = document.getElementById('ideasList');
+            list.innerHTML = '';
+            if (ideas && ideas.length > 0) {
+                ideas.forEach((idea, idx) => {
+                    const div = document.createElement('div');
+                    div.className = 'idea-item';
+                    // سعی می‌کنیم نام ایجنت را از ایده استخراج کنیم (اگر در ابتدا باشد)
+                    const match = idea.match(/^([^:]+):\s*(.*)/);
+                    if (match) {
+                        div.innerHTML = `<strong>${match[1]}:</strong> ${match[2]}`;
+                    } else {
+                        div.innerHTML = `<strong>ایده ${idx+1}:</strong> ${idea}`;
+                    }
+                    list.appendChild(div);
+                });
+            } else {
+                list.innerHTML = '<p class="text-muted">هیچ ایده‌ای ثبت نشده است.</p>';
+            }
+        }
+
+        // دکمه توقف
+        document.getElementById('stopBtn').addEventListener('click', stopSession);
+
+        async function stopSession() {
+            if (!sessionId) return;
+            isStopped = true;
+            isRunning = false;
+            try {
+                await fetch(`/stop/${sessionId}`, { method: 'POST' });
+                document.getElementById('statusBadge').textContent = 'متوقف شد';
+                document.getElementById('statusBadge').className = 'badge bg-danger';
+                document.getElementById('startBtn').disabled = false;
+                document.getElementById('exportArea').style.display = 'block';
+                document.getElementById('currentAgentName').textContent = 'متوقف شد';
+                document.getElementById('loadingSpinner').style.display = 'none';
+                // دریافت خلاصه نهایی
+                const resp = await fetch(`/next/${sessionId}`);
+                const data = await resp.json();
+                if (data.summary && data.summary.all_ideas) {
+                    updateIdeasList(data.summary.all_ideas);
+                }
+            } catch (err) {
+                console.error('Error stopping session:', err);
+            }
+        }
+
+        // دکمه خروجی HTML
+        document.getElementById('exportBtn').addEventListener('click', async function() {
+            if (!sessionId) return;
+            try {
+                // باز کردن در پنجره جدید
+                window.open(`/export/${sessionId}`, '_blank');
+            } catch (err) {
+                alert('خطا در دریافت خروجی: ' + err.message);
+            }
+        });
+    </script>
+</body>
+</html>
