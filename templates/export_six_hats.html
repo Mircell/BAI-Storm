@@ -33,6 +33,31 @@
             margin-bottom: 30px;
             border-right: 5px solid #667eea;
         }
+        .filter-section {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .filter-btn {
+            border-radius: 20px;
+            padding: 6px 16px;
+            border: 1px solid #ddd;
+            background: white;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        .filter-btn:hover {
+            background: #f0f0f0;
+        }
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        .filter-btn .emoji {
+            margin-left: 4px;
+        }
         .hat-card {
             background: #f8f9fa;
             border-radius: 12px;
@@ -40,6 +65,10 @@
             margin-bottom: 15px;
             border-right: 4px solid #764ba2;
             position: relative;
+            transition: opacity 0.3s;
+        }
+        .hat-card.hidden {
+            display: none;
         }
         .hat-name {
             font-weight: bold;
@@ -57,6 +86,14 @@
             font-size: 1.2rem;
             margin-left: 6px;
             vertical-align: middle;
+        }
+        .round-badge {
+            background: #e9ecef;
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-size: 0.75rem;
+            color: #495057;
+            margin-right: 8px;
         }
         .idea-text {
             margin-top: 8px;
@@ -87,6 +124,8 @@
             .btn-print { display: none; }
             body { background: white; padding: 0; }
             .container { box-shadow: none; border-radius: 0; }
+            .filter-section { display: none; }
+            .hat-card.hidden { display: block !important; }
         }
     </style>
 </head>
@@ -109,27 +148,42 @@
             {% endif %}
         </div>
 
+        <!-- دکمه‌های فیلتر -->
+        <div class="filter-section">
+            <button class="filter-btn active" data-hat="-1">همه</button>
+            {% for hat in summary.agents %}
+                <button class="filter-btn" data-hat="{{ loop.index0 }}">
+                    <span class="emoji">{{ hat.emoji }}</span> {{ hat.name }}
+                </button>
+            {% endfor %}
+        </div>
+
         <h4 class="mt-4 mb-3"><i class="bi bi-chat-left-text"></i> نظرات هر کلاه</h4>
 
-        {% if summary.all_ideas %}
-            {% for idea in summary.all_ideas %}
-                <div class="hat-card">
-                    <div class="hat-name">
-                        {% set agent = summary.agents[loop.index0] if loop.index0 < summary.agents|length else None %}
-                        {% if agent %}
-                            <span class="hat-emoji">{{ agent.emoji }}</span>
-                            {{ agent.name }}
-                            <span class="hat-color-indicator hat-color-{{ loop.index0 }}"></span>
-                        {% else %}
-                            کلاه {{ loop.index }}
-                        {% endif %}
+        <div id="hatCardsContainer">
+            {% if summary.all_ideas %}
+                {% for idea in summary.all_ideas %}
+                    {% set hat_index = loop.index0 % 6 %}
+                    {% set agent = summary.agents[hat_index] if hat_index < summary.agents|length else None %}
+                    {% set round_number = (loop.index0 // 6) + 1 %}
+                    <div class="hat-card" data-hat-index="{{ hat_index }}">
+                        <div class="hat-name">
+                            {% if agent %}
+                                <span class="hat-emoji">{{ agent.emoji }}</span>
+                                {{ agent.name }}
+                                <span class="hat-color-indicator hat-color-{{ hat_index }}"></span>
+                                <span class="round-badge">دور {{ round_number }}</span>
+                            {% else %}
+                                کلاه {{ loop.index }}
+                            {% endif %}
+                        </div>
+                        <div class="idea-text">{{ idea }}</div>
                     </div>
-                    <div class="idea-text">{{ idea }}</div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p class="text-muted">هیچ نظری ثبت نشده است.</p>
-        {% endif %}
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">هیچ نظری ثبت نشده است.</p>
+            {% endif %}
+        </div>
 
         <div class="footer">
             <p>تولید شده توسط سیستم تکنیک شش کلاه تفکر</p>
@@ -145,5 +199,30 @@
             </button>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.hat-card');
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const hatIndex = parseInt(this.dataset.hat);
+                    cards.forEach(card => {
+                        const cardHat = parseInt(card.dataset.hatIndex);
+                        if (hatIndex === -1 || cardHat === hatIndex) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -33,12 +33,41 @@
             margin-bottom: 30px;
             border-right: 5px solid #667eea;
         }
+        .filter-section {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .filter-btn {
+            border-radius: 20px;
+            padding: 6px 16px;
+            border: 1px solid #ddd;
+            background: white;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        .filter-btn:hover {
+            background: #f0f0f0;
+        }
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        .filter-btn .emoji {
+            margin-left: 4px;
+        }
         .agent-card {
             background: #f8f9fa;
             border-radius: 12px;
             padding: 15px 20px;
             margin-bottom: 15px;
             border-right: 4px solid #764ba2;
+            transition: opacity 0.3s;
+        }
+        .agent-card.hidden {
+            display: none;
         }
         .agent-name {
             font-weight: bold;
@@ -58,6 +87,14 @@
             border-radius: 20px;
             font-size: 0.8rem;
         }
+        .round-badge {
+            background: #e9ecef;
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-size: 0.75rem;
+            color: #495057;
+            margin-right: 8px;
+        }
         .footer {
             margin-top: 40px;
             text-align: center;
@@ -73,6 +110,8 @@
             .btn-print { display: none; }
             body { background: white; padding: 0; }
             .container { box-shadow: none; border-radius: 0; }
+            .filter-section { display: none; }
+            .agent-card.hidden { display: block !important; }
         }
     </style>
 </head>
@@ -95,30 +134,42 @@
             {% endif %}
         </div>
 
+        <!-- دکمه‌های فیلتر -->
+        <div class="filter-section">
+            <button class="filter-btn active" data-agent="-1">همه</button>
+            {% for agent in summary.agents %}
+                <button class="filter-btn" data-agent="{{ loop.index0 }}">
+                    {{ agent.name }}
+                </button>
+            {% endfor %}
+        </div>
+
         <h4 class="mt-4 mb-3"><i class="bi bi-chat-left-text"></i> ایده‌ها</h4>
 
-        {% if summary.all_ideas %}
-            {% for idea in summary.all_ideas %}
-                <div class="agent-card">
-                    <div class="agent-name">
-                        <i class="bi bi-person-circle"></i>
-                        {% set agent_found = false %}
-                        {% for agent in summary.agents %}
-                            {% if agent.ideas and agent.ideas[loop.index0] == idea %}
+        <div id="agentCardsContainer">
+            {% if summary.all_ideas %}
+                {% set num_agents = summary.num_agents %}
+                {% for idea in summary.all_ideas %}
+                    {% set agent_index = loop.index0 % num_agents %}
+                    {% set agent = summary.agents[agent_index] if agent_index < summary.agents|length else None %}
+                    {% set round_number = (loop.index0 // num_agents) + 1 %}
+                    <div class="agent-card" data-agent-index="{{ agent_index }}">
+                        <div class="agent-name">
+                            <i class="bi bi-person-circle"></i>
+                            {% if agent %}
                                 {{ agent.name }}
-                                {% set agent_found = true %}
+                                <span class="round-badge">دور {{ round_number }}</span>
+                            {% else %}
+                                ایجنت {{ agent_index + 1 }}
                             {% endif %}
-                        {% endfor %}
-                        {% if not agent_found %}
-                            ایجنت {{ loop.index }}
-                        {% endif %}
+                        </div>
+                        <div class="idea-text">{{ idea }}</div>
                     </div>
-                    <div class="idea-text">{{ idea }}</div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p class="text-muted">هیچ ایده‌ای ثبت نشده است.</p>
-        {% endif %}
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">هیچ ایده‌ای ثبت نشده است.</p>
+            {% endif %}
+        </div>
 
         <div class="footer">
             <p>تولید شده توسط سیستم طوفان فکری چند ایجنت</p>
@@ -134,5 +185,30 @@
             </button>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.agent-card');
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const agentIndex = parseInt(this.dataset.agent);
+                    cards.forEach(card => {
+                        const cardAgent = parseInt(card.dataset.agentIndex);
+                        if (agentIndex === -1 || cardAgent === agentIndex) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

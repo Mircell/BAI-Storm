@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تکنیک شش کلاه تفکر</title>
+    <title>طوفان فکری چند ایجنت</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -82,6 +82,37 @@
             padding: 14px 30px;
             font-weight: bold;
         }
+        .agent-personality-group {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-right: 4px solid #667eea;
+        }
+        .agent-personality-group label {
+            font-weight: 600;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        .agent-personality-group textarea {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            width: 100%;
+            resize: vertical;
+            min-height: 60px;
+        }
+        .badge-agents {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .form-text {
+            color: #888;
+            font-size: 0.85rem;
+        }
         .loading-spinner {
             display: none;
             text-align: center;
@@ -94,48 +125,54 @@
             margin-bottom: 8px;
             border-right: 4px solid #764ba2;
         }
-        .hat-color-indicator {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
-            margin-left: 8px;
-        }
-        .hat-emoji {
-            font-size: 1.2rem;
-            margin-left: 6px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <span><i class="bi bi-lightbulb"></i> تکنیک شش کلاه تفکر</span>
+                <span><i class="bi bi-brain"></i> طوفان فکری چند ایجنت</span>
                 <a href="/" class="btn btn-back btn-outline-light btn-sm">
                     <i class="bi bi-arrow-right"></i> بازگشت به صفحه اصلی
                 </a>
             </div>
             <div class="card-body p-4">
-                <div class="alert alert-info">
-                    <i class="bi bi-info-circle"></i> 
-                    <strong>تکنیک شش کلاه تفکر</strong> – شش رویکرد مختلف برای تحلیل یک ایده یا مسئله. هر کلاه نمایانگر یک دیدگاه منحصر‌به‌فرد است و همه کلاه‌ها به ترتیب نظر خود را بر اساس دیدگاه‌های قبلی ارائه می‌دهند.
-                </div>
-
                 <form id="setupForm">
                     <!-- تنظیمات اصلی -->
                     <div class="row mb-4">
                         <div class="col-md-12">
                             <h5 class="mb-3"><i class="bi bi-list-task"></i> تنظیمات جلسه</h5>
                         </div>
-                        <div class="col-md-12 mb-3">
-                            <label class="form-label">ایده / مسئله <span class="text-danger">*</span></label>
-                            <textarea class="form-control" id="problem" rows="3" placeholder="ایده یا مسئله مورد نظر برای تحلیل با شش کلاه تفکر را وارد کنید..." required></textarea>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">تعداد ایجنت‌ها</label>
+                            <input type="number" class="form-control" id="numAgents" value="5" min="1" max="20">
+                            <div class="form-text">بین ۱ تا ۲۰ ایجنت</div>
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <label class="form-label">مسئله / مشکل <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="problem" rows="2" placeholder="مشکل یا موضوع مورد نظر برای طوفان فکری را وارد کنید..." required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- شخصیت‌ها -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="mb-0"><i class="bi bi-person-badge"></i> شخصیت‌های ایجنت</h5>
+                            <div>
+                                <span class="badge-agents" id="agentCountLabel">۵ ایجنت</span>
+                                <button type="button" class="btn btn-sm btn-outline-secondary ms-2" id="togglePersonalitiesBtn">
+                                    <i class="bi bi-chevron-down"></i> نمایش/پنهان
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-text mb-2">شخصیت‌های پیش‌فرض به صورت خودکار تنظیم می‌شوند. می‌توانید آن‌ها را ویرایش کنید.</div>
+                        <div id="personalitiesContainer">
+                            <!-- توسط جاوااسکریپت پر می‌شود -->
                         </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100" id="startBtn">
-                        <i class="bi bi-play-circle"></i> شروع تحلیل با شش کلاه
+                        <i class="bi bi-play-circle"></i> شروع طوفان فکری
                     </button>
                 </form>
 
@@ -158,16 +195,16 @@
                     </div>
                     <div class="loading-spinner" id="loadingSpinner">
                         <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">در حال دریافت تحلیل...</span>
+                            <span class="visually-hidden">در حال دریافت ایده...</span>
                         </div>
-                        <p class="mt-2">در حال تولید تحلیل...</p>
+                        <p class="mt-2">در حال تولید ایده...</p>
                     </div>
                 </div>
 
                 <!-- دکمه‌های خروجی بعد از توقف -->
                 <div id="exportArea" style="display: none;" class="mt-4">
                     <div class="alert alert-success">
-                        <i class="bi bi-check-circle"></i> تحلیل متوقف شد. می‌توانید خروجی را دریافت کنید.
+                        <i class="bi bi-check-circle"></i> طوفان فکری متوقف شد. می‌توانید خروجی را دریافت کنید.
                     </div>
                     <button class="btn btn-success w-100" id="exportBtn">
                         <i class="bi bi-file-earmark-html"></i> دریافت خروجی HTML
@@ -184,9 +221,48 @@
         let isStopped = false;
         let pollInterval = null;
 
+        // مدیریت نمایش/پنهان شخصیت‌ها
+        document.getElementById('togglePersonalitiesBtn').addEventListener('click', function() {
+            const container = document.getElementById('personalitiesContainer');
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+                this.innerHTML = '<i class="bi bi-chevron-up"></i> نمایش/پنهان';
+            } else {
+                container.style.display = 'none';
+                this.innerHTML = '<i class="bi bi-chevron-down"></i> نمایش/پنهان';
+            }
+        });
+
+        // به‌روزرسانی تعداد ایجنت‌ها و شخصیت‌ها
+        document.getElementById('numAgents').addEventListener('input', function() {
+            const num = parseInt(this.value) || 5;
+            document.getElementById('agentCountLabel').textContent = `${num} ایجنت`;
+            renderPersonalities(num);
+        });
+
+        function renderPersonalities(num) {
+            const container = document.getElementById('personalitiesContainer');
+            container.innerHTML = '';
+            for (let i = 0; i < num; i++) {
+                const div = document.createElement('div');
+                div.className = 'agent-personality-group';
+                div.innerHTML = `
+                    <label for="agent_name_${i}">نام ایجنت ${i+1} (اختیاری)</label>
+                    <input type="text" id="agent_name_${i}" class="form-control" placeholder="نام دلخواه برای ایجنت (اختیاری)" style="margin-bottom:8px;">
+                    <label for="personality_${i}">شخصیت ایجنت ${i+1}</label>
+                    <textarea id="personality_${i}" class="form-control" placeholder="شخصیت و نقش این ایجنت را مشخص کنید...">شما یک کارشناس خلاق و تحلیل‌گر هستید. ایده‌های نوآورانه و عملی ارائه دهید.</textarea>
+                `;
+                container.appendChild(div);
+            }
+        }
+
+        // بارگذاری اولیه شخصیت‌ها
+        renderPersonalities(5);
+
         // ارسال فرم
         document.getElementById('setupForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            const numAgents = parseInt(document.getElementById('numAgents').value);
             const problem = document.getElementById('problem').value.trim();
 
             // خواندن تنظیمات API از localStorage
@@ -195,7 +271,7 @@
             const model = localStorage.getItem('apiModel') || 'thinking_not_search';
 
             if (!problem) {
-                alert('لطفاً ایده یا مسئله را وارد کنید.');
+                alert('لطفاً مسئله را وارد کنید.');
                 return;
             }
             if (!apiKey) {
@@ -203,15 +279,28 @@
                 return;
             }
 
+            // جمع‌آوری شخصیت‌ها و نام‌ها
+            const personalities = [];
+            const agentNames = [];
+            for (let i = 0; i < numAgents; i++) {
+                const el = document.getElementById(`personality_${i}`);
+                personalities.push(el ? el.value : '');
+                const nameEl = document.getElementById(`agent_name_${i}`);
+                agentNames.push(nameEl ? nameEl.value : '');
+            }
+
             const data = {
+                num_agents: numAgents,
                 problem: problem,
                 base_url: baseUrl,
                 api_key: apiKey,
-                model: model
+                model: model,
+                personalities: personalities,
+                agent_names: agentNames
             };
 
             try {
-                const response = await fetch('/start_six_hats', {
+                const response = await fetch('/start', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -267,7 +356,7 @@
                     document.getElementById('statusBadge').className = 'badge bg-primary';
                     document.getElementById('startBtn').disabled = false;
                     document.getElementById('exportArea').style.display = 'block';
-                    updateIdeasList(data.summary.all_ideas || [], data.summary.agents || []);
+                    updateIdeasList(data.summary.all_ideas || []);
                     return;
                 }
 
@@ -277,14 +366,14 @@
                     document.getElementById('statusBadge').className = 'badge bg-danger';
                     document.getElementById('startBtn').disabled = false;
                     document.getElementById('exportArea').style.display = 'block';
-                    updateIdeasList(data.summary.all_ideas || [], data.summary.agents || []);
+                    updateIdeasList(data.summary.all_ideas || []);
                     return;
                 }
 
                 // در حال اجرا
                 if (data.agent && data.idea) {
                     document.getElementById('currentAgentName').textContent = data.agent;
-                    addIdeaToUI(data.agent, data.idea, data.color, data.emoji);
+                    addIdeaToUI(data.agent, data.idea);
                 }
 
                 // ادامه polling
@@ -300,53 +389,32 @@
             }
         }
 
-        function addIdeaToUI(agent, idea, color, emoji) {
+        function addIdeaToUI(agent, idea) {
             const list = document.getElementById('ideasList');
             const div = document.createElement('div');
             div.className = 'idea-item';
-            const colorIndicator = color ? `<span class="hat-color-indicator" style="background-color:${color};"></span>` : '';
-            const emojiSpan = emoji ? `<span class="hat-emoji">${emoji}</span>` : '';
-            div.innerHTML = `
-                <div>
-                    ${emojiSpan}
-                    <strong>${agent}</strong>
-                    ${colorIndicator}
-                </div>
-                <div class="mt-1">${idea}</div>
-            `;
+            div.innerHTML = `<strong>${agent}:</strong> ${idea}`;
             list.appendChild(div);
             list.scrollTop = list.scrollHeight;
         }
 
-        function updateIdeasList(ideas, agents) {
+        function updateIdeasList(ideas) {
             const list = document.getElementById('ideasList');
             list.innerHTML = '';
             if (ideas && ideas.length > 0) {
                 ideas.forEach((idea, idx) => {
                     const div = document.createElement('div');
                     div.className = 'idea-item';
-                    let agentName = '';
-                    let color = '';
-                    let emoji = '';
-                    if (agents && agents[idx]) {
-                        agentName = agents[idx].name;
-                        color = agents[idx].color;
-                        emoji = agents[idx].emoji;
+                    const match = idea.match(/^([^:]+):\s*(.*)/);
+                    if (match) {
+                        div.innerHTML = `<strong>${match[1]}:</strong> ${match[2]}`;
+                    } else {
+                        div.innerHTML = `<strong>ایده ${idx+1}:</strong> ${idea}`;
                     }
-                    const colorIndicator = color ? `<span class="hat-color-indicator" style="background-color:${color};"></span>` : '';
-                    const emojiSpan = emoji ? `<span class="hat-emoji">${emoji}</span>` : '';
-                    div.innerHTML = `
-                        <div>
-                            ${emojiSpan}
-                            <strong>${agentName || 'تحلیل‌گر'}</strong>
-                            ${colorIndicator}
-                        </div>
-                        <div class="mt-1">${idea}</div>
-                    `;
                     list.appendChild(div);
                 });
             } else {
-                list.innerHTML = '<p class="text-muted">هیچ تحلیلی ثبت نشده است.</p>';
+                list.innerHTML = '<p class="text-muted">هیچ ایده‌ای ثبت نشده است.</p>';
             }
         }
 
@@ -365,11 +433,10 @@
                 document.getElementById('exportArea').style.display = 'block';
                 document.getElementById('currentAgentName').textContent = 'متوقف شد';
                 document.getElementById('loadingSpinner').style.display = 'none';
-                // دریافت خلاصه نهایی
                 const resp = await fetch(`/next/${sessionId}`);
                 const data = await resp.json();
                 if (data.summary && data.summary.all_ideas) {
-                    updateIdeasList(data.summary.all_ideas, data.summary.agents);
+                    updateIdeasList(data.summary.all_ideas);
                 }
             } catch (err) {
                 console.error('Error stopping session:', err);
