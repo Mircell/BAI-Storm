@@ -75,7 +75,10 @@ BAI-Storm/
 ├── config.py                       # تنظیمات (کلید مخفی، دیباگ، هاست، پورت، لاگ)
 ├── requirements.txt                # وابستگی‌های Python
 ├── models/                         # مدل‌های داده
-│   └── session.py                  # کلاس‌های BrainstormSession و SixHatsSession
+│   ├── base.py                     # کلاس پایه انتزاعی BaseSession
+│   ├── brainstorm.py               # کلاس BrainstormSession
+│   ├── six_hats.py                 # کلاس SixHatsSession
+│   └── session.py                  # رابط عمومی (import و export کلاس‌ها)
 ├── routes/                         # تعریف مسیرها (Routes)
 │   └── main.py                     # کلیه مسیرها با استفاده از Blueprint
 ├── services/                       # سرویس‌های کمکی
